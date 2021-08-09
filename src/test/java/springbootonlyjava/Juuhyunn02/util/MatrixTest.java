@@ -10,29 +10,24 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class ArrayDemoTest {
-    @Mock ArrayDemo arrayDemo;
+class MatrixTest {
+    @Mock
+    Matrix matrix;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        arrayDemo = new ArrayDemo();
+        matrix = new Matrix();
     }
     @Test
-    void test_fill() {
-        String ar = "";
-        for(int i : arrayDemo.fill(7)){
-            ar += i;
+    public void createMatrix() {
+        int[][] mtx = matrix.createMatrix(5, 5);
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                System.out.print(mtx[i][j] + "\t");
+            }
+            System.out.println();
         }
-        assertEquals("77777", ar);
-    }
-    @Test
-    void test_createIntegerArray() {
-        String s = "";
-        for (int i : arrayDemo.createIntegerArray(-9, 0)) {
-            s += i;
-        }
-        assertEquals("12345", s);
+        assertEquals(3, mtx[0][2]);
     }
 
 }
-

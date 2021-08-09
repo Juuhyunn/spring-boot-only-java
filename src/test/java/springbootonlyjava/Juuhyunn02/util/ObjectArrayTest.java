@@ -10,29 +10,22 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
-class ArrayDemoTest {
-    @Mock ArrayDemo arrayDemo;
+class ObjectArrayTest {
+    @Mock
+    ObjectArray objectArray;
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
-        arrayDemo = new ArrayDemo();
+        objectArray = new ObjectArray();
     }
+
     @Test
-    void test_fill() {
-        String ar = "";
-        for(int i : arrayDemo.fill(7)){
-            ar += i;
-        }
-        assertEquals("77777", ar);
-    }
-    @Test
-    void test_createIntegerArray() {
+    void createCart() {
         String s = "";
-        for (int i : arrayDemo.createIntegerArray(-9, 0)) {
-            s += i;
+        for (Product i : objectArray.createCart()) {
+            System.out.println(i);
+            s += String.format("\n%s. %s", i.getProductId(), i.getDescription());
         }
-        assertEquals("12345", s);
+        assertEquals("\n1. Coffee\n2. Computer\n3. Apple\n4. Dress\n5. Fairy-tale book", s);
     }
-
 }
-
